@@ -3,32 +3,21 @@ export default class Character {
     if (typeof name === 'string' && name.length >= 2 && name.length <= 10) {
       this.name = name;
     } else {
-      throw new Error();
+      throw new Error('Некорректное значение имени');
     }
     if (['Bowerman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'].includes(type)) {
       this.type = type;
     } else {
-      throw new Error();
+      throw new Error('Неизвестный тип персонажа');
     }
 
     this.health = 100;
     this.level = 1;
-
-    if (this.type === 'Bowerman' || this.type === 'Undead') {
-      this.attack = 25;
-      this.defence = 25;
-    } else if (this.type === 'Swordsman' || this.type === 'Zombie') {
-      this.attack = 40;
-      this.defence = 10;
-    } else {
-      this.attack = 10;
-      this.defence = 40;
-    }
   }
 
   levelUp() {
     if (this.health <= 0) {
-      throw new Error();
+      throw new Error('Персонаж умер');
     }
     this.level += 1;
     this.attack *= 1.2;
@@ -38,7 +27,7 @@ export default class Character {
 
   damage(points) {
     if (this.health <= 0) {
-      throw new Error();
+      throw new Error('Персонаж умер');
     }
     this.health -= points * (1 - this.defence / 100);
   }
