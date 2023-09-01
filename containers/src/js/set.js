@@ -5,21 +5,14 @@ export class Team {
   }
 
   add(character) {
-    this.members.forEach((e) => {
-      if (e.name === character.name && e.type === character.type) {
-        throw new Error('Данный персонаж уже в команде');
-      }
-    });
+    if (this.members.has(character)) {
+      throw new Error('Данный персонаж уже в команде');
+    }
     this.members.add(character);
   }
 
   addAll(...characters) {
     for (const character of characters) {
-      this.members.forEach((e) => {
-        if (e.name === character.name && e.type === character.type) {
-          throw new Error('Один из персонажей уже в команде');
-        }
-      });
       this.members.add(character);
     }
   }

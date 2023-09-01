@@ -24,10 +24,6 @@ test('method "addAll" should add several new characters to Set collection', () =
   });
 });
 
-test('method "add" should throw Error if the one or more of characters is already in the collection', () => {
-  expect(() => teamA.addAll(knight, elf)).toThrow(new Error('Один из персонажей уже в команде'));
-});
-
 test('method "toArray" should turn a collection into an array', () => {
   const setArr = teamA.toArray();
   expect(Array.isArray(setArr)).toBe(true);
