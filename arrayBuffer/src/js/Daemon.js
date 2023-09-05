@@ -29,14 +29,17 @@ export default class Daemon {
   }
 
   get attack() {
+    if (this._stoned) {
+      // eslint-disable-next-line operator-assignment
+      this._attack -= Math.log2(this.distance) * 5;
+      this._attack = Math.round(this._attack);
+    }
     return `${this.type} ${this.name} наносит ${this._attack}% урон`;
   }
 
   set attack(attack) {
-    if (this._stoned) {
-      // eslint-disable-next-line operator-assignment
-      this._attack = attack - Math.log2(this.distance) * 5;
-      this._attack = Math.round(this._attack);
+    if (attack <= 100 && attack > 0) {
+      this._attack = attack;
     }
   }
 

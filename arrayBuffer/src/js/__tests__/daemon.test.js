@@ -16,9 +16,15 @@ test('attack getter should return correct message', () => {
   expect(daemonKolya.attack).toBe('Daemon Kolya наносит 80% урон');
 });
 
-test('attack setter should should set the correct value', () => {
+test('attack setter should set the correct value', () => {
   const daemonPeter = new Daemon(2, 'Peter');
   daemonPeter.attack = 90;
+  expect(daemonPeter._attack).toBe(90);
+});
+
+test('attack setter must not change the attack value if an invalid parameter is passed.', () => {
+  const daemonPeter = new Daemon(2, 'Peter');
+  daemonPeter.attack = 130;
   expect(daemonPeter._attack).toBe(90);
 });
 
@@ -29,8 +35,7 @@ test('if "distance" parameter is uncorrect should throw new Error', () => {
 test('setting the "stoned" property should change this.attack property according to the formula', () => {
   const daemonOleg = new Daemon(5, 'Oleg');
   daemonOleg.stoned = true;
-  daemonOleg.attack = 60;
-  expect(daemonOleg._attack).toBe(48);
+  expect(daemonOleg.attack).toBe('Daemon Oleg наносит 48% урон');
 });
 
 test('if this._stoned property is not declared when it is called, it should return undefined', () => {
