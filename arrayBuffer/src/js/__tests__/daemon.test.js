@@ -38,9 +38,9 @@ test('setting the "stoned" property should change this.attack property according
   expect(daemonOleg.attack).toBe('Daemon Oleg наносит 48% урон');
 });
 
-test('if this._stoned property is not declared when it is called, it should return undefined', () => {
+test('if this._stoned property is not declared when it is called, it should return falsed', () => {
   const daemonVladimir = new Daemon(4, 'Vladimir');
-  expect(daemonVladimir._stoned).toBe(undefined);
+  expect(daemonVladimir._stoned).toBe(false);
 });
 
 test('stoned getter should return correct message', () => {

@@ -2,8 +2,9 @@
 import Daemon from './Daemon';
 
 // eslint-disable-next-line import/prefer-default-export
-export class Magican extends Daemon {
-  constructor(name, type = 'Magican', distance) {
-    super(name, type, distance);
+export default class Magican extends Daemon {
+  constructor(name, distance) {
+    super(name, distance);
+    this.type = 'Magican';
   }
 }

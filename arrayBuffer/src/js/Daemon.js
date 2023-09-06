@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
+import AttackAndStoned from './AttackAndStoned';
 // eslint-disable-next-line import/prefer-default-export
-export default class Daemon {
+export default class Daemon extends AttackAndStoned {
   // eslint-disable-next-line default-param-last
-  constructor(distance, name, type = 'Daemon') {
+  constructor(distance, name) {
+    super();
     this.name = name;
-    this.type = type;
+    this.type = 'Daemon';
     // eslint-disable-next-line no-unused-expressions
     this.distance = distance;
     switch (distance) {
@@ -26,28 +28,5 @@ export default class Daemon {
       default:
         throw new Error('Объект атаки находится слишком далеко');
     }
-  }
-
-  get attack() {
-    if (this._stoned) {
-      // eslint-disable-next-line operator-assignment
-      this._attack -= Math.log2(this.distance) * 5;
-      this._attack = Math.round(this._attack);
-    }
-    return `${this.type} ${this.name} наносит ${this._attack}% урон`;
-  }
-
-  set attack(attack) {
-    if (attack <= 100 && attack > 0) {
-      this._attack = attack;
-    }
-  }
-
-  get stoned() {
-    return this._stoned ? `${this.type} ${this.name} одурманен` : `${this.type} ${this.name} не одурманен`;
-  }
-
-  set stoned(param) {
-    this._stoned = param;
   }
 }
