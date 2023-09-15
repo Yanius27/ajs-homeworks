@@ -4,6 +4,12 @@ import json from './parser';
 export default class GameSavingLoader {
   static async load() {
     // eslint-disable-next-line arrow-parens
-    return read().then((data) => json(data)).then((response) => JSON.parse(response));
+    try {
+      const buffer = await read();
+      const data = await json(buffer);
+      return JSON.parse(data);
+    } catch (e) {
+      throw new Error(e);
+    }
   }
 }

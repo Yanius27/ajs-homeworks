@@ -2,4 +2,11 @@
 import GameSavingLoader from './js/GameSavingLoader';
 
 // eslint-disable-next-line no-unused-vars
-GameSavingLoader.load().then((saving) => console.log(saving));
+(async () => {
+  try {
+    const saving = await GameSavingLoader.load();
+    return saving;
+  } catch (e) {
+    throw new Error(e);
+  }
+})();
