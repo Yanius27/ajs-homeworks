@@ -4,6 +4,7 @@ export default class Validator {
     const beginOfUserName = /^[^-_\d]/;
     const validCharacters = /[a-zA-Z-_]|(?<!\d)\d{0,3}/;
     const endOfUserName = /[^-_\d]$/;
-    return (beginOfUserName && validCharacters && endOfUserName).test(userName);
+    // eslint-disable-next-line max-len
+    return beginOfUserName.test(userName) && validCharacters.test(userName) && endOfUserName.test(userName);
   }
 }
