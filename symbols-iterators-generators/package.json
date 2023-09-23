@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "1. Каждая задача выполняется в виде отдельного проекта с собственным GitHub-репозиторием.\r 2. Код должен проходить ESLint без ошибок.\r 3. Для задач этого раздела писать автотесты не нужно.\r 4. Решения должны быть построены на базе [шаблона webpack](/ci-template).",
   "main": "webpack.config.js",
+  "type": "module",
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",

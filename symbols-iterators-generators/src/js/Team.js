@@ -1,43 +1,40 @@
 /* eslint-disable prefer-destructuring */
-class Team {
+export default class Team {
   constructor() {
-    this.composition = [];
-    this.from = 0;
-    this.to = 0;
+    this.team = [];
   }
 
   addCharacter(character) {
-    this.composition.push(character);
-    this.to = this.composition.length - 1;
+    this.team.push(character);
   }
+  // 1 Задача. Итераторы
 
-  [Symbol.iterator]() {
-    return {
-      currentPerson: this.from,
-      lastPerson: this.to,
-      next() {
-        if (this.currentPerson <= this.lastPerson) {
-          const actualPerson = this.composition[this.currentPerson];
-          this.currentPerson += 1;
-          return {
-            value: actualPerson,
-            done: false,
-          };
-        }
-        return {
-          value: undefined,
-          done: true,
-        };
-      },
-    };
+  // [Symbol.iterator]() {
+  //   const composition = this.team;
+  //   let count = 0;
+  //   return {
+  //     next() {
+  //       if (count < composition.length) {
+  //         const actualPerson = composition[count];
+  //         count += 1;
+  //         return {
+  //           value: actualPerson,
+  //           done: false,
+  //         };
+  //       }
+  //       return {
+  //         value: undefined,
+  //         done: true,
+  //       };
+  //     },
+  //   };
+  // }
+
+  // 2 Задача. Генераторы
+
+  * [Symbol.iterator]() {
+    for (const char of this.team) {
+      yield char;
+    }
   }
-}
-
-const team = new Team();
-team.addCharacter('Nikolay');
-team.addCharacter('Maria');
-team.addCharacter('John');
-
-for (let item of team) {
-  console.log(item);
 }
