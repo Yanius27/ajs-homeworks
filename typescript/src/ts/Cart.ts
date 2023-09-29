@@ -40,7 +40,9 @@ export default class Cart {
       if(this._items[index].type === 'movie' || this._items[index].quantity < 2) {
         this._items = this._items.filter((item) => item.id !== id);
       } else {
+        this._items[index].cost /= this._items[index].quantity;
         this._items[index].quantity -= 1;
+        this._items[index].cost *= this._items[index].quantity;
       } 
       
     }
